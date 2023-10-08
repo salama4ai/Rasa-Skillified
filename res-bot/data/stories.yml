@@ -1,0 +1,50 @@
+version: "3.1"
+
+stories:
+- story: pre-specified order
+  steps:
+    - intent: make_order
+    - action: action_extract_order
+    - checkpoint: execute_form
+
+- story: unspecified order
+  steps:
+    - intent: want_to_order
+    - action: utter_ask_meal_group
+    - intent: chose_meal_group
+    - checkpoint: execute_form
+
+- story: path that executes form
+  steps:
+    - checkpoint: execute_form
+    - action: order_form
+    - active_loop: order_form
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_show_order 
+    # - action: utter_goodbye
+
+- story: User interrupts the form and doesn't want to continue
+  steps:
+  - checkpoint: execute_form
+  - action: order_form
+  - active_loop: order_form
+  - intent: cancel_order
+  - action: utter_ask_order_cancel
+  - or:
+    - intent: affirm
+    - intent: cancel_order
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_greet
+
+- story: User interrupts the form and want to continue
+  steps:
+  - checkpoint: execute_form
+  - action: order_form
+  - active_loop: order_form
+  - intent: cancel_order
+  - action: utter_ask_order_cancel
+  - intent: deny
+  - action: order_form

@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  rasa_server:
+    container_name: chat_server
+    build:
+      context: ./res-bot
+    ports:
+      - 5005:5005
+    depends_on:
+      - rasa_actions
+    networks:
+      - my-network
+    volumes:
+      - ./res-bot:/app
+
+  rasa_actions:
+    container_name: actions_server
+    build:
+      context: ./res-bot/actions
+    ports:
+      - 5055:5055
+    # volumes:
+    #   - ./rasa-actions:/app     #throws error due to automatic creation of entrypoints.sh
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

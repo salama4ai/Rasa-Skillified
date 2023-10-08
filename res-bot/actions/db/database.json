@@ -1,0 +1,99 @@
+{
+        "regular":[
+                {   "meal_group": "meal",
+                    "item": "bigmac",
+                    "price": "JOD 3.00",
+                    "fries_size": {
+                            "items" :["regular", "heavy"],
+                            "limit": 1
+                        },
+                    "drink": {
+                        "items": {
+                                "coke": ["regular", "medium", "large"],
+                                "fanta": ["regular"],
+                                "water": ["regular"]
+                            },
+                            "limit": 1
+                        },
+                    "extras":{
+                        "items": ["lattuce", "pickles", "onion", "big mac sauce", "meat"],
+                        "limit": 3
+                    },
+                    "removals":{
+                        "items": ["lattuce", "pickles", "onion", "big mac sauce", "cheese"],
+                        "limit": 4
+                }
+            },
+
+            {
+                "meal_group": "sandwich",
+                "item": "egg sandwich",
+                "price": "JOD 0.75",
+                "extras": {
+                    "items": ["lattuce", "pickles", "onion", "sauce"],
+                    "limit": 3
+                },
+                "removals":{
+                    "items":["lattuce", "pickles", "onion", "sauce"],
+                    "limit": 3
+                }
+
+            }
+            ],
+
+        "double": [
+            {   
+                "meal_group": "meal",
+                "item": "cheese burger",
+                "price": "JOD 4.00",
+                "drink": {
+                        "items" :{
+                            "coke": ["large"],
+                            "fanta": ["large"],
+                            "sprite": ["large"],
+                            "coke zero": ["large"],
+                            "water": ["regular"]
+                            },
+                    "limit": 1
+                 },
+                "extras": {
+                    "items" : ["lattuce", "tomato", "chaddar cheese"],
+                    "limit": 3
+                
+                },
+                "removals": {
+                    "items" : ["mustard", "ketchup", "onion", "pickle", "cheese", "meat", "salt"],
+                    "limit": 4
+             }
+            }
+        ],
+        "happy": [
+            {
+                "meal_group": "meal",
+                "item": "cheese burger",
+                "price": "JOD 2.75",
+                "drink":{
+                        "items": {
+                            "coke": ["small", "regular", "medium", "large"],
+                            "fanta": ["small", "regular"]
+                        }
+                },
+                "additions": {
+                        "items": {
+                            "toy": ["boy's toy", "girl's toy"],
+                            "story": ["kids story in english", "kids story in arabic"]
+                        },
+                        "limit": 1
+                },
+                "extras": {
+                    "items": ["onion", "pickles", "lattuce", "ketchup", "cheese"],
+                    "limit": 3
+                },
+                "removals":{
+                    "items": ["mustard", "ketchup", "onion", "pickle"],
+                    "limit": 4
+                }
+
+            }
+        ]
+}

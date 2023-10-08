@@ -1,0 +1,213 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - you are a bot right
+    - aren't you a bot
+    - Are you a bot?
+    - are you a BOT
+    - are you a bot?
+    - are you a chatbot
+    - are you a rasa bot?
+    - are you a real bot?
+    - are you a robot
+    - are you an ai?
+    - are you artificial
+    - are you artificial intelligence
+    - are you bot
+    - are you bot?
+    - are you rasa bot?
+    - are you real
+    - are you real lol
+    - are you really a bot
+    - are you robot
+    - are you sure that you're a bot?
+    - bot?
+    - who are you?
+    - Are you a real person?
+
+- intent: make_order
+  examples: |
+    - I would like to order [regular]{"entity": "meal_type", "group": "meal"} [bigmac]{"entity": "meal", "group": "meal"}
+    - I want to order [double]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal", "group": "meal"}
+    - Can I have [cheese burger]{"entity": "meal",  "group": "meal"}?
+    - Can I get [regular]{"entity": "meal_type", "group": "meal"} [bigmac]{"entity": "meal", "group": "meal"} with a [small]{"entity": "drink_type", "group": "drink"} [coke]{"entity": "drink", "group": "drink"} and extra [lattuce]{"entity": "item", "group": "extra"}, [tomato]{"entity": "item", "group": "extra"}, [cheese]{"entity": "item", "role": "item", "group": "extra"}?
+    - Please make an order for [cheese burger]{"entity": "meal", "group": "meal"} with a [fanta]{"entity": "drink", "group": "drink"} and [remove]{"entity": "removals", "group": "removal"} [lattuce]{"entity": "item", "group": "removal"}, [tomato]{"entity": "item", "group": "removal"}, and please add extra  [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - I want to buy [double]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal", "group": "meal"} with a [large]{"entity": "drink_type", "group": "drink"} [fanta]{"entity": "drink", "group": "drink"} and extra [lattuce]{"entity": "item", "role": "item", "group": "extra"}, [chaddar cheese]{"entity": "item", "role": "item", "group": "extra"}, and [no]{"entity": "removals", "group": "removal"} [meat]{"entity": "item", "role": "item", "group": "removal"} and [salt]{"entity": "item", "role": "item", "group": "removal"}
+    - I want to order a [large]{"entity": "meal_type", "group": "meal"} [pizza]{"entity": "meal",  "group": "meal"} with extra [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - I would like to have a [small]{"entity": "meal_type", "group": "meal"} [pizza]{"entity": "meal", "group": "meal"} with a [regular]{"entity": "drink_type", "group": "drink"} [water]{"entity": "drink", "group": "drink"}
+    - Can I have a [chicken curry]{"entity": "meal",  "group": "meal"}
+    - I want to order [cheese burger]{"entity": "meal", "group": "meal"} with extra [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - I would like to have a [medium]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal", "group": "meal"} with extra [cheese]{"entity": "item", "role": "item", "group": "extra"} and [sausage]{"entity": "item", "role": "item", "group": "extra"}
+    - Can I have a [happy]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal",  "group": "meal"} with no [cheese]{"entity": "item", "role": "item", "group": "extra"} and extra [sausage]{"entity": "item", "role": "item", "group": "extra"}
+    - a [double]{"entity": "meal_type", "group": "meal"} [sandwich]{"entity": "meal", "group": "meal"} extra [tomatoes]{"entity": "item", "group": "extra"}, and [lattuce]{"entity": "item", "group": "extra"}
+    - a [happy]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal", "group": "meal"} extra [lattuce]{"entity": "item", "group": "extra"} and [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - I would like to order [happy]{"entity": "meal_type", "group": "meal"} [cheese burger]{"entity": "meal","group": "meal"}
+    - I would like to order [regular]{"entity": "meal_type", "group": "meal"} [egg sandwich]{"entity": "meal", "group": "meal"}
+    - Can I have a [egg sandwich]{"entity": "meal", "group": "meal"}
+    - I want to order a [large]{"entity": "meal_type", "group": "meal"} [egg sandwich]{"entity": "meal", "group": "meal"} with extra [cheese]{"entity": "item", "role": "item", "group": "extra"}
+   
+- intent: want_to_order
+  examples: |
+    - Hi, I want to make an order
+    - Hello, I would like to make an order
+    - I want to order something
+    - I am feeling hungry
+    - how to make an order
+    - Hi there, I'd like to place an order, please.
+    - I'm interested in making an order.
+    - I'm craving something delicious; could I order?
+    - I'm pretty hungry right now.
+    - Could you guide me on how to place an order?
+
+- intent: chose_extras
+  examples: |
+    - I want extra [lattuce]{"entity": "item", "group": "extra"}, [tomato]{"entity": "item", "group": "extra"}, [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - extra [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - [tomatoes]{"entity": "item", "group": "extra"}, and [lattuce]{"entity": "item", "group": "extra"}
+    - extra [meat]{"entity": "item", "group": "extra"}, and [big mac sauce]{"entity": "item", "group": "extra"}
+    - I want extra [big mac sauce]{"entity": "item", "group": "extra"}, and [meat]{"entity": "item", "group": "extra"}
+    - [pickle]{"entity": "item", "group": "extra"}, and [cheese]{"entity": "item", "group": "extra"}
+    - I would like to have extra [pickle]{"entity": "item", "group": "extra"}, [onion]{"entity": "item", "group": "extra"}, [cheese]{"entity": "item", "role": "item", "group": "extra"}
+    - I'd like my order with some extra [lettuce]{"entity": "item", "group": "extra"}, [tomato]{"entity": "item", "group": "extra"}, and [cheese]{"entity": "item", "group": "extra"}, please.
+    - Could you add extra  cheese to that, please?
+    - Please [include]  tomatoes and lettuce as extras.
+    - I'd like to customize my order with extra [meat]{"entity": "item", "group": "extra"} and [big mac sauce]{"entity": "item", "group": "extra"}.
+    - I want to add extra [big mac sauce]{"entity": "item", "group": "extra"} and [meat]{"entity": "item", "group": "extra"}.
+    - Can I get some [pickles]{"entity": "item", "group": "extra"} and [cheese]{"entity": "item", "group": "extra"} as extras?
+    - I'd love to have extras like [pickles]{"entity": "item", "group": "extra"}, [onions]{"entity": "item", "group": "extra"}, and [cheese]{"entity": "item", "group": "extra"} on my order.
+
+- intent: chose_meal_group
+  examples: |
+    - I want to have a [meal](meal_group)
+    - I want to order a [sandwich](meal_group)
+    - [sandwich](meal_group)
+    - [meal](meal_group)
+    - [sandwich](meal_group)
+    - [meal](meal_group)
+    - I'd like to have a [meal](meal_group), please.
+    - I want to order a [sandwich](meal_group).
+    - Just a [sandwich](meal_group).
+    - I'm interested in a [meal](meal_group).
+    - A [meal](meal_group), please.
+
+- intent: chose_drink
+  examples: |
+    - I want to have [coke]{"entity": "drink", "group": "drink"}
+    - a bottle of [regular]{"entity": "drink_type", "group": "drink"} [water]{"entity": "drink", "group": "drink"}
+    - a [fanta]{"entity": "drink", "group": "drink"}
+    - a bottle of [large]{"entity": "drink_type", "group": "drink"} [fanta]{"entity": "drink", "group": "drink"}
+    - [large]{"entity": "drink_type", "group": "drink"} [fanta]{"entity": "drink", "group": "drink"}
+    - [small]{"entity": "drink_type", "group": "drink"} [coke]{"entity": "drink", "group": "drink"}
+    - a [medium]{"entity": "drink_type", "group": "drink"} [water]{"entity": "drink", "group": "drink"}
+    - a [coke]{"entity": "drink", "group": "drink"}
+    - [coke]{"entity": "drink", "group": "drink"}
+
+- intent: chose_fries_size
+  examples: |
+    - fries size [regular](fries_size)
+    - [small](fries_size) fries size
+    - fries size [small](fries_size)
+    - fries size [large](fries_size)
+    - I want [small](fries_size) fries size
+    - [heavy](fries_size) fries size
+    - I would like to have [heavy](fries_size)
+    - I would like to have [regular](fries_size)
+    - [Small](fries_size) fries size, please.
+    - I'd like the [large](fries_size) fries size.
+    - I want the [small](fries_size) fries size.
+    - [Heavy](fries_size) fries size.
+    - I'd like to have it [heavy](fries_size).
+    - I would like to have it [regular](fries_size).
+    - Can I have a [large](fries_size) fries size?
+
+- intent: chose_drink_type
+  examples: |
+    - drink type [regular]{"entity": "drink_type", "group": "drink"}
+    - I would like to have a [large]{"entity": "drink_type", "group": "drink"}
+    - I want a [small]{"entity": "drink_type", "group": "drink"} one
+    - [medium]{"entity": "drink_type", "group": "drink"} drink type
+    - drink type [regular]{"entity": "drink_type", "group": "drink"}
+    - I'll have the [regular]{"entity": "drink_type", "group": "drink"} drink, please.
+    - Could I get a [large]{"entity": "drink_type", "group": "drink"} drink?
+    - I'd like a [small]{"entity": "drink_type", "group": "drink"} one, please.
+    - Can I have a [medium]{"entity": "drink_type", "group": "drink"} sized drink?
+    - I'll go with the [regular]{"entity": "drink_type", "group": "drink"} drink type.
+    - [small]{"entity": "drink_type", "group": "drink"}
+    - [medium]{"entity": "drink_type", "group": "drink"}
+    - [regular]{"entity": "drink_type", "group": "drink"}
+
+- intent: cancel_order
+  examples: |
+    - stop
+    - I don't want to make any order
+    - Please stop
+    - I don't want to proceed forward
+
+
+- intent: faq_generic
+  examples: |
+    - What are your hours of operation?
+    - Do you offer delivery or takeout options?
+    - Can I make a reservation for a table?
+    - What's on the menu?
+    - Do you have any vegetarian or vegan options?
+    - What are today's specials?
+    - Is there a kids' menu?
+    - Are there any gluten-free or allergen-free menu items?
+    - What's the dress code for the restaurant?
+    - How can I provide feedback or make a complaint?
+
+- synonym: remove
+  examples: |
+    - remove
+    - no
+    - do not add
+    - don't add
+    - do not put
+  
+

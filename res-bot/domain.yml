@@ -1,0 +1,215 @@
+version: '3.1'
+intents:
+- affirm
+- chose_drink
+- chose_drink_type
+- chose_fries_size
+- chose_meal_group
+- chose_meal_type
+- chose_extras
+- deny
+- goodbye
+- greet
+- make_order
+- want_to_order
+- bot_challenge
+- cancel_order
+- faq_generic
+
+responses:
+  utter_greet:
+  - text: Hey! what can I do for you !!!! ?
+  utter_goodbye:
+  - text: Bye
+  - text: Good bye, Have a nice day
+  utter_ask_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_default:
+  - text: I'm sorry, I didn't understand you? I will forward the message to the human operator"
+  # utter_ask_drink_type:
+  # - text: do you want a small, large, regular or medium drink
+  utter_ask_removals:
+  - text: Do you want to remove any thing from the meal like salt, cheese?
+  # utter_ask_meal_type:
+  # - text: do you want regular, large or happy meal?
+  utter_ask_meal_group:
+  - text: what do you like to have meal or sandwich?
+  utter_ask_comments:
+  - text: "do you have any comments?"
+  utter_ask_confirmation:
+  - text: "are you sure you want to change the meal?"
+  utter_iamabot:
+  - text: "I am a bot you can ask me faq, you can order food and check your order status"
+  utter_ask_order_cancel:
+  - text: "do you want to cancel the order?"
+
+entities:
+- item
+- extras
+- drink_type
+- meal_type
+- fries_size
+- meal
+- drink
+- removals
+- meal_group
+
+slots:
+  meal_group:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: meal_group
+      intent: chose_meal_group
+
+  meal:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: meal
+      group: meal
+      # role: main_meal
+    # - type: from_text
+    #   conditions:
+    #   - active_loop: order_form
+    #     requested_slot: meal
+  
+  prev_meal:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  meal_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    # - type: from_text
+    #   conditions:
+    #   - active_loop: order_form
+    #     requested_slot: meal_type
+    - type: from_entity
+      entity: meal_type
+      group: meal
+
+  drink:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: drink
+      group: drink
+      intent: chose_drink
+    # - type: from_text
+    #   intent: chose_drink
+    #   conditions:
+    #   - active_loop: order_form
+    #     requested_slot: drink
+
+  drink_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: drink_type
+      group: drink
+      intent: chose_drink_type
+    # - type: from_text
+    #   intent: chose_drink_type
+    #   conditions:
+    #   - active_loop: order_form
+    #     requested_slot: drink_type
+
+  additions:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  extras:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  removals:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  fries_size:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: fries_size
+    - type: from_text
+      intent: chose_fries_size
+      conditions:
+      - active_loop: order_form
+        requested_slot: fries_size
+
+  comments:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: order_form
+        requested_slot: comments
+  
+  need_confirmation:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+  
+  confirmation:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: order_form
+        requested_slot: confirmation
+  
+
+
+actions:
+# - utter_goodbye
+# - utter_ask_meal_group
+# - utter_iamabot
+# - utter_default
+# - utter_ask_meal_type
+- utter_ask_order_cancel
+
+- action_ask_meal
+- action_ask_meal_type
+- action_ask_fries_size
+- action_ask_drink
+- action_ask_drink_type
+- action_ask_extras
+- action_ask_additions
+
+- validate_order_form
+
+- action_extract_order
+- action_show_order
+- action_reset_all_slots
+- action_faq_handle
+
+
+forms:
+  order_form:
+    required_slots:
+    - meal_group
+    - meal
+    - meal_type
+    - comments
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

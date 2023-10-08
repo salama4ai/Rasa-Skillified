@@ -1,0 +1,7 @@
+# Exclude files and directories for Rasa chatbot
+# rasa/models
+bot/.*
+bot/actions/__pycache__
+bot/db/.ipynb_checkpoints
+bot/db/Json_Parser.ipynb
+bot/story_graph.dot
